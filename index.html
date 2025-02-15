@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5G Network Access Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Network Speed Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+ <!-- Include Chart.js -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Login Section -->
+    <div class="login-container active" id="loginContainer">
+        <h2>5G Network Access</h2>
+        <form id="loginForm">
+            <input type="password" id="passwordInput" placeholder="Enter network password" required>
+            <div id="passwordStrength" class="password-strength"></div>
+            <div class="password-requirements" id="passwordRequirements">
+                <div class="requirement" id="lengthReq">At least 8 characters</div>
+                <div class="requirement" id="upperReq">One uppercase letter</div>
+                <div class="requirement" id="lowerReq">One lowercase letter</div>
+                <div class="requirement" id="numberReq">One number</div>
+                <div class="requirement" id="specialReq">One special character</div>
+            </div>
+            <button type="submit">Connect</button>
+        </form>
+    </div>
+
+    <!-- Dashboard Section -->
+    <div class="dashboard-container" id="dashboardContainer">
+        <div class="header">
+            <div>
+                <h1>5G Network Dashboard</h1>
+                <p>Status: <span id="networkStatus">Connected</span></p>
+            </div>
+            <button class="disconnect" id="disconnectBtn">Disconnect</button>
+        </div>
+
+        <div class="nav-tabs">
+            <button class="nav-tab active" data-tab="network">Network</button>
+            <button class="nav-tab" data-tab="security">Security</button>
+            <button class="nav-tab" data-tab="theme">Theme</button>
+        </div>
+
+        <!-- Network Tab -->
+        <div class="tab-content active" id="networkTab">
+            <div class="metrics-container">
+                <div class="metric-card">
+                    <h3>Network Speed (Gbps)</h3>
+                    <canvas id="speedChart"></canvas>
+                    <p id="speedMetric">0 Mbps</p>
+                </div>
+                <div class="metric-card">
+                    <h3>Latency</h3>
+                    <canvas id="latencyChart"></canvas>
+                    <p id="latencyMetric">0 ms</p>
+                </div>
+                <div class="metric-card">
+                    <h3>Signal Strength</h3>
+                    <p id="signalMetric">0%</p>
+                </div>
+            </div>
+
+            <div class="devices-container">
+                <h2>Connected Devices</h2>
+                <div id="devicesList"></div>
+            </div>
+        </div>
+
+        <!-- Security Tab -->
+        <div class="tab-content" id="securityTab">
+            <div class="password-container">
+                <h2>Password Management</h2>
+                <form id="changePasswordForm">
+                    <input type="password" id="currentPassword" placeholder="Current Password" required>
+                    <input type="password" id="newPassword" placeholder="New Password" required>
+                    <input type="password" id="confirmPassword" placeholder="Confirm New Password" required>
+                    <div id="newPasswordStrength" class="password-strength"></div>
+                    <button type="submit">Change Password</button>
+                </form>
+
+                <div class="password-history">
+                    <h3>Password History</h3>
+                    <div id="passwordHistoryList"></div>
+                </div>
+            </div>
+
+            <div class="security-alerts">
+                <h3>Security Alerts</h3>
+                <div id="securityAlertsList"></div>
+            </div>
+        </div>
+
+        <!-- Theme Tab -->
+        <div class="tab-content" id="themeTab">
+            <div class="theme-container">
+                <h2>Customize Dashboard</h2>
+                <h3>Color Scheme</h3>
+                <div class="color-picker" id="colorPicker">
+                    <div class="color-option active" style="background: #1a73e8;" data-color="#1a73e8">Blue</div>
+                    <div class="color-option" style="background: #28a745;" data-color="#28a745">Green</div>
+                    <div class="color-option" style="background: #dc3545;" data-color="#dc3545">Red</div>
+                    <div class="color-option" style="background: #6f42c1;" data-color="#6f42c1">Purple</div>
+                </div>
+
+                <h3>Layout Options</h3>
+                <div class="layout-options">
+                    <label>
+                        <input type="checkbox" id="compactMode"> Compact Mode
+                    </label>
+                    <label>
+                        <input type="checkbox" id="darkMode"> Dark Mode
+                    </label>
+                </div>
+
+                <h3>Preview</h3>
+                <div class="theme-preview" id="themePreview">
+                    <div class="metric-card">
+                        <h3>Sample Card</h3>
+                        <p>Preview of your selected theme</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
